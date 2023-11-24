@@ -1,0 +1,40 @@
+@api=  http://localhost:3000/api/registros
+
+GET {{api}}
+###
+POST {{api}}
+Content-Type: application/json 
+
+{
+    "id_tipo": "0",
+    "nombre": "Raul",
+    "apellido": "Hernandez",
+    "correo_electronico": "raul@gmail.com",
+    "numero_celular": "95023042",
+    "usuarios": "RR",
+    "fecha_nacimiento": "2-5-3",
+    "contraseña": "Banana14",
+    "sexo": "M"
+}
+
+###    
+GET {{api}}/1
+
+###
+DELETE {{api}}/4
+
+###
+PUT {{api}}/3
+Content-Type: application/json 
+
+{
+    "id_tipo":"0",
+    "nombre": "Denuar",
+    "apellido": "Hernandez",
+    "correo_electronico": "denuar@gmail.com",
+    "numero_celular": "95023042",
+    "usuarios": "Anubis",
+    "contraseña": "Banana14",
+    "fecha_nacimiento": "2-5-3",
+    "sexo": "M"
+}
