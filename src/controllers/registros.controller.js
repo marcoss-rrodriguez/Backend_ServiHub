@@ -1,74 +1,22 @@
 import { getConnection, sql, queriesRegistro } from "../database";
+const modeloregistro = require('../models/registros.models');
 
 export const mostrarRegistros = async (req, res) => {
   try {
-    const pool = await getConnection();
-    const result = await pool.request().query(queriesRegistro.mostrarRegistros);
-    //console.log(result);
-    res.json(result.recordset);
+    const registros = await modeloregistro.findAll();
+    res.json(registros);
   } catch (error) {
-    res.status(500);
-    res.send(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
 
 export const añadirRegistro = async (req, res) => {
-  const {
-    id_tipo,
-    nombre,
-    apellido,
-    correo_electronico,
-    numero_celular,
-    usuarios,
-    contraseña,
-    fecha_nacimiento,
-    sexo,
-  } = req.body;
-
-  if (
-    nombre == null ||
-    apellido == null ||
-    correo_electronico == null ||
-    numero_celular == null ||
-    usuarios == null ||
-    fecha_nacimiento == null ||
-    contraseña == null ||
-    sexo == null
-  ) {
-    return res.status(400).json({ msg: "Bad Request. Llena todos los campos" });
-  }
-  if (id_tipo == null) id_tipo = 0;
-
   try {
-    const pool = await getConnection();
-
-    pool
-      .request()
-      .input("id_tipo", sql.Int, id_tipo)
-      .input("nombre", sql.VarChar, nombre)
-      .input("apellido", sql.VarChar, apellido)
-      .input("correo_electronico", sql.Text, correo_electronico)
-      .input("numero_celular", sql.Int, numero_celular)
-      .input("usuarios", sql.VarChar, usuarios)
-      .input("contraseña", sql.VarChar, contraseña)
-      .input("fecha_nacimiento", sql.VarChar, fecha_nacimiento)
-      .input("sexo", sql.Text, sexo)
-      .query(queriesRegistro.añadirRegistro);
-
-    res.json({
-      id_tipo,
-      nombre,
-      apellido,
-      correo_electronico,
-      numero_celular,
-      usuarios,
-      contraseña,
-      fecha_nacimiento,
-      sexo,
-    });
+    const nuevoRegistro = await modeloregistro.create(req.body);
+    res.json(nuevoRegistro);
+    
   } catch (error) {
-    res.status(500);
-    res.send(error.message);
+    res.status(500).json({ error: error.message});
   }
 };
 

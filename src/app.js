@@ -12,5 +12,5 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api", registrosRoutes);
-
+app.use("/api/añadir", registrosRoutes);
 export default app;

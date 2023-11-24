@@ -1,12 +1,16 @@
-import {config} from 'dotenv'
+import { config } from 'dotenv';
 config();
 
-console.log(process.env.PORT)
+const { Sequelize } = require('sequelize');
 
-export default {
-    port: process.env.PORT || 3000,
-    dbUser: process.env.DB_USER || "",
-    dbPassword: process.env.DB_PASSWORD || "",
-    dbSERVER: process.env.DB_SERVER || "",
-    dbDatabase: process.env.DB_DATABASE || "",
-}
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
+  host: process.env.DB_SERVER,
+  dialect: 'mssql', // Elige el dialecto correspondiente a tu base de datos (MySQL, PostgreSQL, etc.)
+  dialectOptions: {
+    options: {
+      encrypt: true, // Si es necesario, dependiendo de la configuración de tu servidor
+    },
+  },
+});
+
+module.exports = sequelize;
