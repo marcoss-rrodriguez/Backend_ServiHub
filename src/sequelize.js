@@ -6,7 +6,7 @@ host: 'servihub.database.windows.net',
     dialect: 'mssql',
     dialectOptions: {
         options: {
-          encrypt: true, // Si estás usando Azure u otras configuraciones de seguridad
+          encrypt: true, 
         },
       },
 }); 
