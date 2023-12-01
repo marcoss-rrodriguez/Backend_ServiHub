@@ -1,51 +1,41 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../sequelize");
 
-const ModeloRegistros = sequelize.define(
-    "ModeloServicio",
+const ModeloServicios = sequelize.define(
+    "ModeloServicios",
     {
-      id_servicios: {
+      id_servicio: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true, 
       },
-      id_usuarios: {
+      id_vendedor: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-  
-      categorias: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-  
-      precio_trabajo: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-  
-      ubicacion: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-  
-      descripcion: {
+
+      nombre_servicio:{
         type: DataTypes.STRING, 
         allowNull: false,
       },
-  
-      fecha_inicio: {
-        type: DataTypes.INTEGER,//DUDA
+
+      descripcion_servicio: {
+        type: DataTypes.STRING, 
+        allowNull: false,
+      },
+
+      precio: {
+        type: DataTypes.DOUBLE,
         allowNull: false,
       },
   
-      fecha_finalizacion: {
-        type: DataTypes.INTEGER,//DUDA
+      categoria_servicio: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
   
-      imagen: {
+      imagen_servicio: {
         type: DataTypes.STRING,//DUDA
         allowNull: false,
       },

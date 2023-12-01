@@ -10,18 +10,31 @@ import {
 const routerServicios= Router();
 
 // Ruta para obtener todos los registros
-routerRegistros.get("/servicios", mostrarSevicios);
+routerServicios.get("/servicios", (req, res) => {
+    mostrarSevicios(req, res)
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: err.toString() });
+      });
+  });
+  
 
 // Ruta para agregar un nuevo registro
-routerRegistros.post("/servicios", añadirServicios);
+routerServicios.post("/servicios", añadirServicios);
 
 // Ruta para obtener un registro por su ID
-routerRegistros.get("/servicios/:id_servicios", recibirPorServicios);
-
+routerServicios.get("/servicios/:categoria_servicio", (req, res) => {
+    recibirPorServicios(req, res)
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: err.toString() });
+      });
+  });
+  
 // Ruta para eliminar un registro por su ID
-routerRegistros.delete("/servicios/:id_servicios", borrarServico);
+routerServicios.delete("/servicios/:id_servicio", borrarServico);
 
 // Ruta para actualizar un registro por su ID
-routerRegistros.put("/servicios/:id_servicios", actualizarServicio);
+routerServicios.put("/servicios/:id_servicio", actualizarServicio);
 
 export default routerServicios;

@@ -1,4 +1,4 @@
-import ModeloRegistros from '../models/servicios.models';
+import ModeloServicios from '../models/servicios.models';
 
 export const mostrarSevicios = async (req, res) => {
     try {
@@ -20,7 +20,7 @@ export const mostrarSevicios = async (req, res) => {
   
   export const recibirPorServicios = async (req, res) => {
     try {
-      const servicio = await ModeloServicios.findByPk(req.params.categorias);
+      const servicio = await ModeloServicios.findOne({ where: { categoria_servicio: req.params.categoria_servicio } });
       if (servicio) {
         res.json(servicio);
       } else {
@@ -31,10 +31,11 @@ export const mostrarSevicios = async (req, res) => {
     }
   };
   
+  
   export const borrarServico = async (req, res) => {
     try {
       const numServicosEliminados = await ModeloServicios.destroy({
-        where: { id_servicios: req.params.id_servicios }
+        where: { id_servicio: req.params.id_servicio }
       });
       if (numServicosEliminados) {
         res.json({ message: 'Servicio eliminado con éxito' });
@@ -49,9 +50,9 @@ export const mostrarSevicios = async (req, res) => {
   export const actualizarServicio = async (req, res) => {
     try {
       const servicioActualizado = await ModeloServicios.update(req.body, {
-        where: { id_servicios: req.params.id_servicios }
+        where: { id_servicio: req.params.id_servicio }
       });
-      if (servicoActualizado[0] !== 0) {
+      if (servicioActualizado[0] !== 0) {
         res.json({ message: 'Servicio actualizado con éxito' });
       } else {
         res.status(404).json({ error: 'Servicio no encontrado' });
@@ -60,4 +61,3 @@ export const mostrarSevicios = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   };
-  
