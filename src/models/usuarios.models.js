@@ -1,16 +1,16 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../sequelize");
 
-const ModeloRegistros = sequelize.define(
-  "ModeloRegistro",
+const ModeloUsuarios = sequelize.define(
+  "ModeloUsuarios",
   {
-    id_registros: {
+    id_usuario: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
       autoIncrement: true, 
     },
-    id_tipo: {
+    id_rol: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -25,17 +25,17 @@ const ModeloRegistros = sequelize.define(
       allowNull: false,
     },
 
-    correo_electronico: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    numero_celular: {
+    telefono: {
       type: DataTypes.INTEGER, ///en duda
       allowNull: false,
     },
 
-    usuarios: {
+    nombre_usuario: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -46,19 +46,19 @@ const ModeloRegistros = sequelize.define(
     },
 
     fecha_nacimiento: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
 
     sexo: {
-      type: DataTypes.STRING,
+      type: DataTypes.CHAR,
       allowNull: false,
     },
   },
   {
-    tableName: 'registros',
+    tableName: 'usuarios',
     timestamps: false, 
   }
 );
 
-module.exports = ModeloRegistros;
+module.exports = ModeloUsuarios;
