@@ -10,11 +10,7 @@ const ModeloUsuarios = sequelize.define(
       allowNull: false,
       autoIncrement: true, 
     },
-    id_rol: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-
+    
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,17 +21,17 @@ const ModeloUsuarios = sequelize.define(
       allowNull: false,
     },
 
-    email: {
+    nombre_usuario: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    telefono: {
-      type: DataTypes.INTEGER, ///en duda
+    id_tipo_usuario: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
 
-    nombre_usuario: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -53,6 +49,31 @@ const ModeloUsuarios = sequelize.define(
     sexo: {
       type: DataTypes.CHAR,
       allowNull: false,
+    },
+
+    puntuacion_vendedor:{
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+
+    puntuacion_comprador:{
+      type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+
+    descripcion_perfil:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    id_foto_perfil: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+
+    horarios_atencion:{
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {
