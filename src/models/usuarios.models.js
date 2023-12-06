@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../sequelize");
+const ModeloTipoUsuarios = require("./tipos_usuario.models")
 
 const ModeloUsuarios = sequelize.define(
   "ModeloUsuarios",
@@ -81,5 +82,10 @@ const ModeloUsuarios = sequelize.define(
     timestamps: false, 
   }
 );
+
+ModeloUsuarios.belongsTo(ModeloTipoUsuarios, {
+  foreignKey: 'id_tipo_usuario',
+  as: 'tipoUsuario'
+});
 
 module.exports = ModeloUsuarios;

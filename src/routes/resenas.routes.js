@@ -5,7 +5,7 @@ import {
     recibirResenasPorId,
     borrarResenas,
     actualizarResena
-} from "../controllers/resenas.controller";
+} from "../controllers/resenas.controllers";
 
 const routerResenas= Router();
 
@@ -16,12 +16,12 @@ routerResenas.get("/resenas", mostrarResenas);
 routerResenas.post("/resenas", añadirResena);
 
 // Ruta para obtener un registro por su ID
-routerResenas.get("/resenas/:id_resenas", recibirResenasPorId);
+routerResenas.get("/resenas/:id_resena", recibirResenasPorId);
 
 // Ruta para eliminar un registro por su ID
-routerResenas.delete("/resenas/:id_resenas", borrarResenas);
+routerResenas.delete("/resenas/:id_resena", borrarResenas);
 
 // Ruta para actualizar un registro por su ID
-routerResenas.put("/resenas/:id_resenas", actualizarResena);
+routerResenas.put("/resenas/:id_resena", actualizarResena);
 
 export default routerResenas;

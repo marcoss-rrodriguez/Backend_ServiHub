@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../sequelize");
+const ModeloUsuarios = require("./usuarios.models"); // Importar el modelo de usuarios
+
 
 const ModeloResenas = sequelize.define(
   "ModeloResena",
@@ -8,7 +10,7 @@ const ModeloResenas = sequelize.define(
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
-      autoIncrement: true, 
+      autoIncrement: true,
     },
     id_evaluador: {
       type: DataTypes.INTEGER,
@@ -26,19 +28,27 @@ const ModeloResenas = sequelize.define(
     },
 
     comentario: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-
-    fecha_resena: {
-      type: DataTypes.DATE, ///en duda
+    rol_evaluado: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
   {
-    tableName: 'resenas',
-    timestamps: false, 
+    tableName: "resenas",
+    timestamps: false,
   }
 );
+
+ModeloResenas.belongsTo(ModeloUsuarios, {
+  foreignKey: 'id_evaluador',
+  as: 'evaluador'
+});
+ModeloResenas.belongsTo(ModeloUsuarios, {
+  foreignKey: 'id_evaluado',
+  as: 'evaluado'
+});
 
 module.exports = ModeloResenas;
