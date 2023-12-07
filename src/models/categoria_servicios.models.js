@@ -10,7 +10,7 @@ const ModeloCategorias_Servicios = sequelize.define(
       allowNull: false,
       autoIncrement: true, 
     },
-    nombre_categotia: {
+    nombre_categoria: {
       type: DataTypes.STRING,
       allowNull: false,
     },

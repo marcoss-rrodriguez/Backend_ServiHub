@@ -4,7 +4,7 @@ const ModeloUsuarios = require("./usuarios.models"); // Importar el modelo de us
 
 
 const ModeloResenas = sequelize.define(
-  "ModeloResena",
+  "ModeloResenas",
   {
     id_resena: {
       type: DataTypes.INTEGER,
@@ -12,6 +12,7 @@ const ModeloResenas = sequelize.define(
       allowNull: false,
       autoIncrement: true,
     },
+    
     id_evaluador: {
       type: DataTypes.INTEGER,
       allowNull: false,

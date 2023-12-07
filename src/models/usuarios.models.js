@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../sequelize");
-const ModeloTipoUsuarios = require("./tipos_usuario.models")
+const ModeloTipo_Usuarios = require("./tipo_usuario.models");
+const ModeloFotos = require("./fotos.models");
 
 const ModeloUsuarios = sequelize.define(
   "ModeloUsuarios",
@@ -83,9 +84,14 @@ const ModeloUsuarios = sequelize.define(
   }
 );
 
-ModeloUsuarios.belongsTo(ModeloTipoUsuarios, {
+ModeloUsuarios.belongsTo(ModeloTipo_Usuarios, {
   foreignKey: 'id_tipo_usuario',
   as: 'tipoUsuario'
+});
+
+ModeloUsuarios.belongsTo(ModeloFotos, {
+  foreignKey: 'id_foto_perfil',
+  as: 'fotoPerfil'
 });
 
 module.exports = ModeloUsuarios;

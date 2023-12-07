@@ -1,7 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../sequelize");
 
-const ModeloTpoUsuarios = sequelize.define(
+//Modifique el nombre del modelo antes estaba Tpo_Usuarios, y lo cambie a Tipo_Usuarios
+const ModeloTipo_Usuarios = sequelize.define(
   "ModeloTipoUsuarios",
   {
     id_tipo_usuario: {
@@ -21,4 +22,4 @@ const ModeloTpoUsuarios = sequelize.define(
   }
 );
 
-module.exports = ModeloTpoUsuarios;
+module.exports = ModeloTipo_Usuarios;
