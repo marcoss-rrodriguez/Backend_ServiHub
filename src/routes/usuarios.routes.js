@@ -13,7 +13,7 @@ const routerUsuarios= Router();
 routerUsuarios.get("/usuarios", mostrarUsuarios);
 
 // Ruta para agregar un nuevo registro
-routerUsuarios.post("/usuarios", añadirUsuarios);
+routerUsuarios.post("/usuarios/", añadirUsuarios);
 
 // Ruta para obtener un registro por su ID
 routerUsuarios.get("/usuarios/:id_usuario", recibirUsuarioPorId);

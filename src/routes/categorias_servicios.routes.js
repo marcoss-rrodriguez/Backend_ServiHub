@@ -5,23 +5,23 @@ import {
     recibirServiciosPorId,
     borrarServicio,
     actualizarServicio
-} from "../controllers/categoria_servicios.controller";
+} from "../controllers/categorias_servicios.controllers";
 
 const routerRegistros= Router();
 
 // Ruta para obtener todos los registros
-routerServicios.get("/categoria_servicios", mostrarServicios);
+routerRegistros.get("/categoria_servicios", mostrarServicios);
 
 // Ruta para agregar un nuevo registro
-routerServicios.post("/categoria_servicios", añadirServicios);
+routerRegistros.post("/categoria_servicios", añadirServicios);
 
 // Ruta para obtener un registro por su ID
-routerServicios.get("/categoria_servicios/:id_categoria", recibirServiciosPorId);
+routerRegistros.get("/categoria_servicios/:id_categoria", recibirServiciosPorId);
 
 // Ruta para eliminar un registro por su ID
-routerServicios.delete("/categoria_servicios/:id_categoria", borrarServicio);
+routerRegistros.delete("/categoria_servicios/:id_categoria", borrarServicio);
 
 // Ruta para actualizar un registro por su ID
-routerServicios.put("/categoria_servicios/:id_categoria", actualizarServicio);
+routerRegistros.put("/categoria_servicios/:id_categoria", actualizarServicio);
 
-export default routerServicios;
+export default routerRegistros;
