@@ -5,7 +5,7 @@ import {
     recibirResenasPorId,
     borrarResenas,
     actualizarResena
-} from "../controllers/resenas.controllers";
+} from "../controllers/resenas.controller";
 
 const routerResenas= Router();
 

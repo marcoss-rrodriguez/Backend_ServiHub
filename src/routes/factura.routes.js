@@ -1,22 +1,22 @@
 import { Router } from "express";
 import {
-  mostrarFactura,
-  añadirFactura,
-  recibirFacturaPorId,
+  mostrarfacturas,
+  añadirFacturas,
+  recibirFacturasPorId,
   borrarFactura,
   actualizarFactura,
-} from "../controllers/categorias_servicios.controllers";
+} from "../controllers/factura.controller";
 
 const routerFactura = Router();
 
 // Ruta para obtener todos los registros
-routerFactura.get("/factura", mostrarFactura);
+routerFactura.get("/factura", mostrarfacturas);
 
 // Ruta para agregar un nuevo registro
-routerFactura.post("/factura", añadirFactura);
+routerFactura.post("/factura", añadirFacturas);
 
 // Ruta para obtener un registro por su ID
-routerFactura.get("/factura/:id_factura", recibirFacturaPorId);
+routerFactura.get("/factura/:id_factura", recibirFacturasPorId);
 
 // Ruta para eliminar un registro por su ID
 routerFactura.delete("/factura/:id_factura", borrarFactura);

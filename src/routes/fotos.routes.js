@@ -1,27 +1,27 @@
 import { Router } from "express";
 import {
-  mostrarfoto,
-  añadirfoto,
-  recibirfotoPorId,
-  borrarfoto,
-  actualizarfoto,
-} from "../controllers/categorias_servicios.controllers";
+  mostrarFotos,
+  añadirFotos,
+  recibirFotosPorId,
+  borrarHorario,
+  actualizarHorario,
+} from "../controllers/fotos.controller";
 
 const routerfoto = Router();
 
 // Ruta para obtener todos los registros
-routerfoto.get("/foto", mostrarfoto);
+routerfoto.get("/foto", mostrarFotos);
 
 // Ruta para agregar un nuevo registro
-routerfoto.post("/foto", añadirfoto);
+routerfoto.post("/foto", añadirFotos);
 
 // Ruta para obtener un registro por su ID
-routerfoto.get("/foto/:id_foto", recibirfotoPorId);
+routerfoto.get("/foto/:id_foto", recibirFotosPorId);
 
 // Ruta para eliminar un registro por su ID
-routerfoto.delete("/foto/:id_foto", borrarfoto);
+routerfoto.delete("/foto/:id_foto", borrarHorario);
 
 // Ruta para actualizar un registro por su ID
-routerfoto.put("/foto/:id_foto", actualizarfoto);
+routerfoto.put("/foto/:id_foto", actualizarHorario);
 
 export default routerfoto;

@@ -1,36 +1,36 @@
 import { Router } from "express";
 import {
-  mostrarDetallesFactura,
-  añadirDetallesFactura,
-  recibirDetallesFacturaPorId,
-  borrarDetallesFactura,
-  actualizarDetallesFactura,
-} from "../controllers/categorias_servicios.controllers";
+  mostrarDetalles_Factura,
+  añadirDetalles_Factura,
+  recibirDetalles_FacturaPorId,
+  borrarDetalles_Factura,
+  actualizarDetalles_Factura,
+} from "../controllers/detalles_factura.controller";
 
 const routerDetallesFactura = Router();
 
 // Ruta para obtener todos los registros
-routerDetallesFactura.get("/detales_factura", mostrarDetallesFactura);
+routerDetallesFactura.get("/detales_factura", mostrarDetalles_Factura);
 
 // Ruta para agregar un nuevo registro
-routerDetallesFactura.post("/detales_factura", añadirDetallesFactura);
+routerDetallesFactura.post("/detales_factura", añadirDetalles_Factura);
 
 // Ruta para obtener un registro por su ID
 routerDetallesFactura.get(
   "/detales_factura/:id_detalle_factura",
-  recibirDetallesFacturaPorId
+  recibirDetalles_FacturaPorId
 );
 
 // Ruta para eliminar un registro por su ID
 routerDetallesFactura.delete(
   "/detales_factura/:id_detalle_factura",
-  borrarDetallesFactura
+  borrarDetalles_Factura
 );
 
 // Ruta para actualizar un registro por su ID
 routerDetallesFactura.put(
   "/detales_factura/:id_detalle_factura",
-  actualizarDetallesFactura
+  actualizarDetalles_Factura
 );
 
 export default routerDetallesFactura;

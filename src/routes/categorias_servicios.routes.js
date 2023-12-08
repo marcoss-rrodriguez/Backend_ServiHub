@@ -5,7 +5,7 @@ import {
     recibirServiciosPorId,
     borrarServicio,
     actualizarServicio
-} from "../controllers/categorias_servicios.controllers";
+} from "../controllers/categorias_servicios.controller";
 
 const routerRegistros= Router();
 
