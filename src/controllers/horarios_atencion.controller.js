@@ -1,9 +1,9 @@
-import ModeloHorario_Atencion from '../models/horario_atencion.models';
+import ModeloHorario_Atencion from '../models/horarios_atencion.models';
 
 export const mostrarHorario = async (req, res) => {
   try {
     const categoria_horarios = await ModeloHorario_Atencion.findAll();
-    res.json(categoria_horarios);
+    res.status(200).json({categoria_horarios});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -12,7 +12,7 @@ export const mostrarHorario = async (req, res) => {
 export const añadirHorarios = async (req, res) => {
   try {
     const nuevoHorario = await ModeloHorario_Atencion.create(req.body);
-    res.json(nuevoHorario);
+    res.status(201).json({nuevoHorario});
   } catch (error) {
     res.status(500).json({ error: error.message});
   }
@@ -22,7 +22,7 @@ export const recibirHorariosPorId = async (req, res) => {
   try {
     const nuevoHorario = await ModeloHorario_Atencion.findByPk(req.params.id_horario);
     if (nuevoHorario) {
-      res.json(nuevoHorario);
+      res.status(200).json({nuevoHorario});
     } else {
       res.status(404).json({ error: 'Horario no encontrado' });
     }
@@ -37,7 +37,7 @@ export const borrarHorario = async (req, res) => {
       where: { id_horario: req.params.id_horario }
     });
     if (numHorariosEliminados) {
-      res.json({ message: 'Horario eliminado con éxito' });
+      res.status(200).json({ message: 'Horario eliminado con éxito' });
     } else {
       res.status(404).json({ error: 'Horario no encontrado' });
     }
@@ -52,7 +52,7 @@ export const actualizarHorario = async (req, res) => {
       where: { id_horario: req.params.id_horario }
     });
     if (horarioActualizado[0] !== 0) {
-      res.json({ message: 'Horario actualizado con éxito' });
+      res.status(200).json({ message: 'Horario actualizado con éxito' });
     } else {
       res.status(404).json({ error: 'Horario no encontrado' });
     }

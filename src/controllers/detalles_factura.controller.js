@@ -3,7 +3,7 @@ import ModeloDetalles_Factura from '../models/detalles_factura.models';
 export const mostrarDetalles_Factura = async (req, res) => {
   try {
     const fotos = await ModeloDetalles_Factura.findAll();
-    res.json(fotos);
+    res.status(200).json({fotos});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -12,7 +12,7 @@ export const mostrarDetalles_Factura = async (req, res) => {
 export const añadirDetalles_Factura = async (req, res) => {
   try {
     const nuevoDetalles_Factura = await ModeloDetalles_Factura.create(req.body);
-    res.json(nuevoDetalles_Factura);
+    res.status(201).json({nuevoDetalles_Factura});
   } catch (error) {
     res.status(500).json({ error: error.message});
   }
@@ -22,7 +22,7 @@ export const recibirDetalles_FacturaPorId = async (req, res) => {
   try {
     const nuevoDetalles_Factura = await ModeloDetalles_Factura.findByPk(req.params.id_detalles_factura);
     if (nuevoDetalles_Factura) {
-      res.json(nuevoDetalles_Factura);
+      res.status(200).json({nuevoDetalles_Factura});
     } else {
       res.status(404).json({ error: 'Factura no encontrado' });
     }
@@ -37,7 +37,7 @@ export const borrarDetalles_Factura = async (req, res) => {
       where: { id_detalles_factura: req.params.id_detalles_factura }
     });
     if (numDetalles_FacturaEliminados) {
-      res.json({ message: 'Factura eliminado con éxito' });
+      res.status(200).json({ message: 'Factura eliminado con éxito' });
     } else {
       res.status(404).json({ error: 'Factura no encontrado' });
     }
@@ -52,7 +52,7 @@ export const actualizarDetalles_Factura = async (req, res) => {
       where: { id_detalles_factura: req.params.id_detalles_factura }
     });
     if (Detalles_FacturaActualizado[0] !== 0) {
-      res.json({ message: 'Factura actualizado con éxito' });
+      res.status(200).json({ message: 'Factura actualizado con éxito' });
     } else {
       res.status(404).json({ error: 'Factura no encontrado' });
     }

@@ -3,7 +3,7 @@ import ModeloCategorias_Servicios from '../models/categoria_servicios.models';
 export const mostrarServicios = async (req, res) => {
   try {
     const categoria_servicios = await ModeloCategorias_Servicios.findAll();
-    res.json(categoria_servicios);
+    res.status(200).json({categoria_servicios});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -12,7 +12,7 @@ export const mostrarServicios = async (req, res) => {
 export const añadirServicios = async (req, res) => {
   try {
     const nuevoServicios = await ModeloCategorias_Servicios.create(req.body);
-    res.json(nuevoServicios);
+    res.status(201).json({nuevoServicios});
   } catch (error) {
     res.status(500).json({ error: error.message});
   }
@@ -22,7 +22,7 @@ export const recibirServiciosPorId = async (req, res) => {
   try {
     const nuevoServicios = await ModeloCategorias_Servicios.findByPk(req.params.id_categoria);
     if (nuevoServicios) {
-      res.json(nuevoServicios);
+      res.status(200).json({nuevoServicios});
     } else {
       res.status(404).json({ error: 'Servicio no encontrado' });
     }
@@ -37,7 +37,7 @@ export const borrarServicio = async (req, res) => {
       where: { id_categoria: req.params.id_categoria }
     });
     if (numServiciosEliminados) {
-      res.json({ message: 'Servicio eliminado con éxito' });
+      res.status(200).json({ message: 'Servicio eliminado con éxito' });
     } else {
       res.status(404).json({ error: 'Servicio no encontrado' });
     }
@@ -52,7 +52,7 @@ export const actualizarServicio = async (req, res) => {
       where: { id_categoria: req.params.id_categoria }
     });
     if (servicioActualizado[0] !== 0) {
-      res.json({ message: 'Servicio actualizado con éxito' });
+      res.status(200).json({ message: 'Servicio actualizado con éxito' });
     } else {
       res.status(404).json({ error: 'Servicio no encontrado' });
     }

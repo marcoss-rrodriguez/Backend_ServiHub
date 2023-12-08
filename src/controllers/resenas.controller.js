@@ -3,7 +3,7 @@ import ModeloResenas from '../models/resenas.models';
 export const mostrarResenas = async (req, res) => {
   try {
     const resenas = await ModeloResenas.findAll();
-    res.json(resenas);
+    res.status(200).json({resenas});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -12,7 +12,7 @@ export const mostrarResenas = async (req, res) => {
 export const añadirResena = async (req, res) => {
   try {
     const nuevoResenas = await ModeloResenas.create(req.body);
-    res.json(nuevoResenas);
+    res.status(201).json({nuevoResenas});
   } catch (error) {
     res.status(500).json({ error: error.message});
   }
@@ -22,7 +22,7 @@ export const recibirResenasPorId = async (req, res) => {
   try {
     const resenas = await ModeloResenas.findByPk(req.params.id_resena);
     if (resenas) {
-      res.json(resenas);
+      res.status(200).json({resenas});
     } else {
       res.status(404).json({ error: 'Reseña no encontrado' });
     }
@@ -37,7 +37,7 @@ export const borrarResenas = async (req, res) => {
       where: { id_resena: req.params.id_resena }
     });
     if (numResenasEliminados) {
-      res.json({ message: 'Reseña eliminado con éxito' });
+      res.status(200).json({ message: 'Reseña eliminado con éxito' });
     } else {
       res.status(404).json({ error: 'Reseña no encontrado' });
     }
@@ -52,7 +52,7 @@ export const actualizarResena = async (req, res) => {
       where: { id_resena: req.params.id_resena }
     });
     if (resenaActualizado[0] !== 0) {
-      res.json({ message: 'Reseña actualizado con éxito' });
+      res.status(200).json({ message: 'Reseña actualizado con éxito' });
     } else {
       res.status(404).json({ error: 'Reseña no encontrado' });
     }
